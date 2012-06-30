@@ -4,9 +4,9 @@ require File.expand_path('../lib/em-tvdb/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Julien Ammous"]
   gem.email         = ["schmurfy@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = %q{EM tvdb website wrapper}
+  gem.summary       = %q{EM tvdb website wrapper}
+  gem.homepage      = "https://github.com/schmurfy/em-tvdb"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
