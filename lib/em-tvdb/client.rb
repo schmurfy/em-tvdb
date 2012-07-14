@@ -1,3 +1,5 @@
+require 'time'
+
 require 'rest-core'
 require 'eventmachine'
 require 'nokogiri'
@@ -102,11 +104,21 @@ module EM
     def episodes(serie_id, &block)
       @client.get("/#{@api_key}/series/#{serie_id}/all/en.xml") do |xml|
         episodes = xml.css('Episode').map do |ep|
+          aired_date = ep.content_node('FirstAired')
+          
+          if aired_date.empty?
+            aired_date = nil
+          else
+            aired_date = Time.parse(aired_date)
+          end
+          
+          
           Hashie::Mash.new(
             :id               => ep.content_node('id'),
             :name             => ep.content_node('EpisodeName'),
             :episode_number   => ep.content_node('EpisodeNumber').to_i,
             :season_number    => ep.content_node('SeasonNumber').to_i,
+            :aired_date       => aired_date,
             :overview         => ep.content_node('Overview')
           )
         end
