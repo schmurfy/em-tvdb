@@ -123,8 +123,7 @@ module EM
           )
         end
         
-        episodes.select{|ep| ep.season_number > 0 }.sort_by(&:episode_number)
-        
+        episodes = episodes.select{|ep| ep.season_number > 0 }.sort_by(&:episode_number)
         block.call(episodes)
       end
     end
