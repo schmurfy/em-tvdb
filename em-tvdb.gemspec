@@ -14,7 +14,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = EmTvdb::VERSION
   
-  gem.add_dependency 'rest-core'
+  gem.add_dependency 'rest-core',       '~> 1.0.2'
   gem.add_dependency 'nokogiri',        '~> 1.5.0'
   gem.add_dependency 'em-http-request'
   gem.add_dependency 'hashie'
